@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="Description"
+      content="danharris.io - portfolio site for Dan Harris - full-stack dev 🤓, grad advocate 👩‍🎓, beer enthusiast 🍺"
+    />
+    <meta name="theme-color" content="#5e548e" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png" />
+    <title>danharris.io - web perf</title>
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" />
+    <script src="https://unpkg.com/perfume.js/dist/perfume.iife.min.js"></script>
+    <style>
+      body {
+        background-color: white; /* explicitly set this so we can hide loading spinners behing iframe */
+      }
+      code {
+        line-height: 1.2;
+      }
+      /* base */
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: 'Fira Sans', sans-serif;
+        font-size: 16px;
+        width: 100%;
+        text-align: center;
+      }
+
+      @font-face {
+        font-family: 'FuraCode Nerd Font Mono';
+        src: url('./Fura-Code-Retina-Nerd-Font-Complete-Mono.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      code {
+        text-align: left;
+        font-size: 1.75rem;
+        font-family: 'FuraCode Nerd Font Mono', monospace;
+        font-weight: 600;
+      }
+
+      code .comment {
+        color: #9e9e9e;
+      }
+
+      :focus {
+        outline: #865cd6 dashed 5px;
+      }
+
+      /* code preview section */
+      section.code {
+        text-align: left;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      button.action-thing {
+        color: black;
+        position: absolute;
+        right: 200px;
+        top: 130px;
+        padding: 1rem;
+      }
+
+      button.action-thing svg {
+        margin: 0;
+      }
+
+      button.action-thing .action-thing__left,
+      button.action-thing .action-thing__right {
+        opacity: 0;
+        color: #865cd6;
+      }
+
+      @keyframes rumble {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+        25% {
+          -webkit-transform: translate(3px, 0px) rotate(-3deg);
+        }
+        50% {
+          -webkit-transform: translate(0px, -3px) rotate(0deg);
+        }
+        75% {
+          -webkit-transform: translate(-3px, 0px) rotate(3deg);
+        }
+        100% {
+          -webkit-transform: translate(0px, 3px) rotate(0deg);
+        }
+      }
+
+      button.action-thing.animate-thing {
+        animation: rumble 0.3s infinite linear;
+      }
+
+      @keyframes fadeupleft {
+        0% {
+          transform: translateX(0px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(-5px);
+          opacity: 0;
+        }
+      }
+
+      button.action-thing.animate-thing .action-thing__left {
+        animation: fadeupleft 0.5s infinite linear;
+      }
+
+      @keyframes fadeupright {
+        0% {
+          transform: translateX(0px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(5px);
+          opacity: 0;
+        }
+      }
+
+      button.action-thing.animate-thing .action-thing__right {
+        animation: fadeupright 0.5s infinite linear;
+      }
+
+      /* meta indicators */
+      section.indicators {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 0.75rem;
+      }
+
+      section.indicators label {
+        font-size: 3rem;
+        font-family: 'Fjalla One';
+        display: inline-block;
+        text-align: right;
+      }
+
+      section.indicators label:not(:last-of-type) {
+        margin-right: 1.5rem;
+      }
+
+      /* action buttons */
+      section.actions {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      section.actions button:not(:last-of-type) {
+        margin-right: 1.25rem;
+      }
+
+      button {
+        font-family: 'Fira Sans';
+        font-size: 2.5rem;
+        background: none;
+        border: none;
+        display: flex;
+        flex-direction: row;
+color: #9c9c9c;
+        padding-bottom: 0.25rem;
+        margin: 0.3rem;
+        margin: 0.3rem;
+      }
+
+      button svg {
+        margin-right: 0.75rem;
+        margin-top: 0.5rem;
+        stroke: currentColor;
+      }
+
+      button.reset-button svg {
+        height: 40px;
+        width: 40px;
+        margin-right: 0.5rem;
+      }
+
+      button:hover {
+        color: black;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        color: initial;
+        opacity: 0.2;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- main content -->
+    <main>
+      <!-- code -->
+      <section class="code">
+        <code>
+          &lt;html&gt;<br />
+          &nbsp;&nbsp;&lt;head&gt; <br />
+          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
+          &nbsp;&nbsp;&lt;/head&gt;<br />
+          &nbsp;&nbsp;&lt;body&gt; <br />
+          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt;<br />
+          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* some js */<br /></span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br />
+          &nbsp;&nbsp;&lt;/body&gt; <br />
+          &lt;/html&gt;<br />
+        </code>
+        <button class="action-thing">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              class="action-thing__right"
+              d="M1.57054 43.2367C4.49993 27.6149 13.7182 13.6421 26.9507 4.7676L30.4791 10.1265C18.7093 18.0371 10.5077 30.4662 7.88675 44.3651L1.57054 43.2367Z"
+              fill="currentColor"
+              stroke="white"
+            />
+            <path
+              class="action-thing__left"
+              d="M89.5214 10.1268L93.0498 4.76785C106.282 13.6423 115.501 27.6151 118.43 43.2369L112.114 44.3653C109.493 30.4663 101.291 18.0371 89.5214 10.1268Z"
+              fill="currentColor"
+              stroke="white"
+            />
+            <path
+              d="M102.142 72.9818V73.1889L102.289 73.3353L109.558 80.6047V95.2806V95.7806H110.058H115.738V102.196H80.6785H80.26L80.1863 102.608C78.4708 112.197 70.0743 119.5 60.0012 119.5C49.9282 119.5 41.5314 112.197 39.8162 102.608L39.7425 102.196H39.324H4.26465V95.7806H9.94449H10.4445V95.2806V80.6047L17.7139 73.3353L17.8603 73.1889V72.9818V54.2922C17.8603 35.1565 30.7894 18.5066 49.0075 13.6029L49.3775 13.5033V13.1201V11.1237C49.3775 5.26624 54.1438 0.5 60.0012 0.5C65.8587 0.5 70.625 5.26624 70.625 11.1237V13.1201V13.5033L70.995 13.6029C89.2131 18.5066 102.142 35.1565 102.142 54.2922V72.9818ZM17.3603 83.4694H16.8603V95.2804V95.7804H17.3603H102.642H103.142V95.2804V83.4692V83.2621L102.996 83.1156L95.7264 75.8463V54.2919C95.7264 37.2002 83.566 22.4491 66.8095 19.2173L64.2092 18.7158V11.1237C64.2092 8.80304 62.3219 6.91581 60.0012 6.91581C57.6806 6.91581 55.7933 8.80304 55.7933 11.1237V18.7161L53.193 19.2176C36.4364 22.4494 24.2761 37.2004 24.2761 54.2922V75.8465L17.0068 83.1159L17.3603 83.4694ZM46.9237 102.196H46.2619L46.4427 102.833C48.1206 108.741 53.5599 113.084 60.0012 113.084C66.4424 113.084 71.8819 108.741 73.5598 102.833L73.7406 102.196H73.0788H46.9237Z"
+              fill="currentColor"
+              stroke="white"
+            />
+          </svg>
+        </button>
+      </section>
+
+      <!-- 'meta' indicators -->
+      <section class="indicators">
+        <label><span class="fp-counter">0</span> FMP</label>
+        <label><span class="fid-counter">0</span> FID</label>
+      </section>
+
+      <!-- actions -->
+      <section class="actions">
+        <button class="reset-button" onclick="reloadPage()">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M33.6155 5.15705H36.9659H37.2159V4.90705V2.43282V2.18282H36.9659H26.9413H26.6913V2.43282V12.5148V12.7648H26.9413H29.4155H29.6655V12.5148V6.04975C34.9608 9.11106 38.2758 14.7594 38.2758 21C38.2758 30.5257 30.5257 38.2758 21 38.2758C11.4743 38.2758 3.72423 30.5257 3.72423 21C3.72423 11.4743 11.4743 3.72423 21 3.72423C21.4273 3.72423 21.8632 3.74049 22.2954 3.77245L22.5447 3.79089L22.5631 3.54159L22.7458 1.07413L22.7643 0.824823L22.515 0.806353C22.0102 0.768955 21.5005 0.75 21 0.75C15.5915 0.75 10.5055 2.85675 6.68112 6.68104L6.68112 6.68104C2.85675 10.5055 0.75 15.5915 0.75 21C0.75 26.4085 2.85675 31.4945 6.68112 35.3189C10.5055 39.1432 15.5915 41.25 21 41.25C26.4085 41.25 31.4945 39.1432 35.319 35.3189C39.1432 31.4945 41.25 26.4085 41.25 21C41.25 16.9171 40.0397 12.9808 37.7501 9.6179C36.5925 7.9179 35.1986 6.41845 33.6155 5.15705Z"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="0.5"
+            />
+            <path
+              d="M19.5131 8.03143V19.5129H8.01074H7.76074V19.7629V22.2371V22.4871H8.01074H22.2373H22.4873V22.2371V8.03143V7.78143H22.2373H19.7631H19.5131V8.03143Z"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="0.5"
+            />
+          </svg>
+          reload
+        </button>
+      </section>
+    </main>
+
+    <script>
+      /**
+       * setup perfume for our load metrics
+       */
+      window.perfume = new Perfume({ firstPaint: true, firstContentfulPaint: true, firstInputDelay: true });
+      window.perfume.start('FirstInputDelay');
+
+      /**
+       * reload the page so we can check metrics
+       */
+      function reloadPage() {
+        document.body.innerHTML = '';
+        document.body.style.backgroundColor = 'transparent'; // shifty tricks to show background spinner 😱
+        setTimeout(() => (window.location = window.location), 1000);
+      }
+
+      /**
+       * get metric elements
+       */
+      function getFirstLoadElements() {
+        const FPCounterElement = document.querySelector('.fp-counter');
+        const FIDCounterElement = document.querySelector('.fid-counter');
+        const buttonActionElement = document.querySelector('.action-thing');
+        return { FPCounterElement, FIDCounterElement, buttonActionElement };
+      }
+
+      /**
+       * emulate a tricky js operation
+       */
+      function fibonacci(num, memo = {}) {
+        if (memo[num]) {
+          return memo[num];
+        }
+        if (num <= 1) {
+          return 1;
+        }
+        console.log('✨', num);
+        return (memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2, memo));
+      }
+
+      /**
+       * set our metrics once loaded
+       */
+      document.addEventListener('DOMContentLoaded', () => {
+        const { FPCounterElement, FIDCounterElement } = getFirstLoadElements();
+        setTimeout(() => {
+          fibonacci(1200);
+          const firstInputDelay = window.perfume.end('FirstInputDelay');
+          FPCounterElement.textContent = Math.round(window.perfume.firstPaintDuration);
+          FIDCounterElement.textContent = Math.round(firstInputDelay);
+        }, 500);
+      });
+
+      /**
+       * create a js driven action button
+       */
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const { buttonActionElement } = getFirstLoadElements();
+        buttonActionElement.addEventListener('mouseenter', () => (buttonActionElement.style.color = '#865cd6'));
+        buttonActionElement.addEventListener('mouseleave', () => (buttonActionElement.style.color = 'black'));
+        buttonActionElement.addEventListener('click', () => buttonActionElement.classList.toggle('animate-thing'));
+      });
+    </script>
+  </body>
+</html>

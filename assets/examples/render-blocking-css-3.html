@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="Description"
+      content="danharris.io - portfolio site for Dan Harris - full-stack dev 🤓, grad advocate 👩‍🎓, beer enthusiast 🍺"
+    />
+    <meta name="theme-color" content="#5e548e" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png" />
+    <title>danharris.io - web perf</title>
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" />
+    <link rel="preload" href="http://deelay.me/2000/localhost:3000/examples/first-load-full.css" as="style" onload="onDOMLoad(this)" />
+    <script src="https://unpkg.com/perfume.js/dist/perfume.iife.min.js"></script>
+    <style>
+      body {
+        background-color: white; /* explicitly set this so we can hide loading spinners behing iframe */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- main content -->
+    <main>
+      <!-- code -->
+      <section class="code">
+        <code>
+          &lt;html&gt;<br />
+          &nbsp;&nbsp;&lt;head&gt; <br />
+          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel=&quot;preload&quot; href=&quot;one-big-file-of.css&quot;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;as=&quot;style&quot; onload=&quot;this.rel='stylesheet'&quot; /&gt;<br />
+          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
+          &nbsp;&nbsp;&lt;/head&gt;<br />
+          &nbsp;&nbsp;&lt;body&gt; <br />
+          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
+          &nbsp;&nbsp;&lt;/body&gt; <br />
+          &lt;/html&gt;<br />
+        </code>
+      </section>
+
+      <!-- 'meta' indicators -->
+      <section class="indicators">
+        <label><span class="fp-counter">0</span> FP</label>
+        <label><span class="fmp-counter">0</span> FMP</label>
+      </section>
+
+      <!-- actions -->
+      <section class="actions">
+        <button class="reset-button" onclick="reloadPage()">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M33.6155 5.15705H36.9659H37.2159V4.90705V2.43282V2.18282H36.9659H26.9413H26.6913V2.43282V12.5148V12.7648H26.9413H29.4155H29.6655V12.5148V6.04975C34.9608 9.11106 38.2758 14.7594 38.2758 21C38.2758 30.5257 30.5257 38.2758 21 38.2758C11.4743 38.2758 3.72423 30.5257 3.72423 21C3.72423 11.4743 11.4743 3.72423 21 3.72423C21.4273 3.72423 21.8632 3.74049 22.2954 3.77245L22.5447 3.79089L22.5631 3.54159L22.7458 1.07413L22.7643 0.824823L22.515 0.806353C22.0102 0.768955 21.5005 0.75 21 0.75C15.5915 0.75 10.5055 2.85675 6.68112 6.68104L6.68112 6.68104C2.85675 10.5055 0.75 15.5915 0.75 21C0.75 26.4085 2.85675 31.4945 6.68112 35.3189C10.5055 39.1432 15.5915 41.25 21 41.25C26.4085 41.25 31.4945 39.1432 35.319 35.3189C39.1432 31.4945 41.25 26.4085 41.25 21C41.25 16.9171 40.0397 12.9808 37.7501 9.6179C36.5925 7.9179 35.1986 6.41845 33.6155 5.15705Z"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="0.5"
+            />
+            <path
+              d="M19.5131 8.03143V19.5129H8.01074H7.76074V19.7629V22.2371V22.4871H8.01074H22.2373H22.4873V22.2371V8.03143V7.78143H22.2373H19.7631H19.5131V8.03143Z"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="0.5"
+            />
+          </svg>
+          reload
+        </button>
+      </section>
+    </main>
+
+    <script>
+      /**
+       * setup perfume for our load metrics
+       */
+      window.perfume = new Perfume({ firstPaint: true, firstContentfulPaint: true, firstInputDelay: true });
+      window.perfume.start('FirstMeaningfulPaint');
+
+      /**
+       * reload the page so we can check metrics
+       */
+      function reloadPage() {
+        document.body.innerHTML = '';
+        document.body.style.backgroundColor = 'transparent'; // shifty tricks to show background spinner 😱
+        setTimeout(() => (window.location = window.location), 1000);
+      }
+
+      /**
+       * get metric elements
+       */
+      function getFirstLoadElements() {
+        const FPCounterElement = document.querySelector('.fp-counter');
+        const FMPCounterElement = document.querySelector('.fmp-counter');
+        return { FPCounterElement, FMPCounterElement };
+      }
+
+      /**
+       * set our metrics once loaded
+       */
+      window.onDOMLoad = function onDOMLoad(element) {
+        element.rel = 'stylesheet';
+        const { FPCounterElement, FMPCounterElement } = getFirstLoadElements();
+        setTimeout(() => {
+          FPCounterElement.textContent = Math.round(window.perfume.firstPaintDuration);
+          const firstMeaningfulPaint = window.perfume.end('FirstMeaningfulPaint');
+          if (!isNaN(firstMeaningfulPaint)) FMPCounterElement.textContent = Math.round(firstMeaningfulPaint - 500);
+        }, 500);
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+/* base */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'FuraCode Nerd Font Mono';
+  src: url('./Fura-Code-Retina-Nerd-Font-Complete-Mono.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+code {
+  text-align: left;
+  font-size: 1.75rem;
+  font-family: 'FuraCode Nerd Font Mono', monospace;
+  font-weight: 600;
+  font-variant-ligatures: common-ligatures;
+}
+
+code .comment {
+  color: #9e9e9e;
+}
+
+:focus {
+  outline: #865cd6 dashed 5px;
+}
+
+/* code preview section */
+section.code {
+  text-align: left;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* meta indicators */
+section.indicators {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+section.indicators label {
+  font-size: 3rem;
+  font-family: 'Fjalla One';
+  display: inline-block;
+  text-align: right;
+}
+
+section.indicators label:not(:last-of-type) {
+  margin-right: 1.5rem;
+}
+
+/* action buttons */
+section.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+section.actions button:not(:last-of-type) {
+  margin-right: 1.25rem;
+}
+
+button {
+  font-family: 'Fira Sans';
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  color: #9c9c9c;
+  padding-bottom: 0.25rem;
+}
+
+button svg {
+  margin-right: 0.75rem;
+  margin-top: 0.5rem;
+  stroke: currentColor;
+}
+
+button.reset-button svg {
+  height: 40px;
+  width: 40px;
+  margin-right: 0.5rem;
+}
+
+button:hover {
+  color: black;
+  cursor: pointer;
+}
+
+button:disabled {
+  color: initial;
+  opacity: 0.2;
+}
