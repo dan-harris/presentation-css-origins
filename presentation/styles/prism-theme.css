@@ -3,28 +3,27 @@
  * Based on the slides of the talk “/Reg(exp){2}lained/”
  * @author Lea Verou
  */
-pre {
-  font-size: 1.5rem !important; /* gross, but need to override inline styles 😢 */
+pre,
+pre.prism-code.builtin-prism-theme {
   line-height: 1.85rem;
   width: 120%;
   margin-left: -10% !important; /* gross, but need to override inline styles 😢 */
 }
 
-code {
-  /* background-color: rgba(0, 0, 0, 0.15); */
-  background-color: #504779;
+code,
+pre.prism-code.builtin-prism-theme {
   padding: 1.5rem;
-  font-family: 'FuraCode Nerd Font Mono', 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
+  font-family: 'Fira Code', 'FuraCode Nerd Font Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
 }
 
 :not(pre) > code[class*='language-'],
 code[class*='language-'],
-pre[class*='language-'] {
-  color: white;
+pre[class*='language-'].prism-code.builtin-prism-theme,
+.codeslide pre code {
+  color: black;
   background: none;
-  text-shadow: 0 -0.1em 0.2em black;
-  font-family: 'FuraCode Nerd Font Mono', 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  font-size: 1.5rem;
+  text-shadow: none;
+  font-family: 'Fira Code', 'FuraCode Nerd Font Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   line-height: 2rem;
   text-align: left;
   white-space: pre;
@@ -50,19 +49,29 @@ pre[class*='language-'] {
   }
 }
 
-pre[class*='language-'],
+pre[class*='language-'].prism-code.language-js.builtin-prism-theme,
+pre[class*='language-'].prism-code.language-markup.builtin-prism-theme,
 :not(pre) > code[class*='language-'] {
-  background: hsl(30, 20%, 25%);
+  background: none;
 }
 
 /* Code blocks */
-pre[class*='language-'] {
+.codeslide pre > code,
+pre[class*='language-'].prism-code.language-js.builtin-prism-theme,
+pre[class*='language-'].prism-code.language-markup.builtin-prism-theme {
   padding: 1em;
-  margin: 0.5em 0;
-  overflow: auto;
-  border: 0.3em solid hsl(30, 20%, 40%);
-  border-radius: 0.5em;
-  box-shadow: 1px 1px 0.5em black inset;
+  overflow: hidden;
+  background: none;
+  text-shadow: none;
+  font-variant: common-ligatures;
+  font-size: 2.25rem;
+  font-weight: 500;
+}
+.codeslide code > div {
+  min-height: 1.25em;
+}
+.codeslide pre {
+  margin-top: -10% !important;
 }
 
 /* Inline code */
@@ -72,78 +81,133 @@ pre[class*='language-'] {
   border: 0.13em solid hsl(30, 20%, 40%);
   box-shadow: 1px 1px 0.3em -0.1em black inset;
   white-space: normal;
+  font-variant: common-ligatures;
 }
 
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: rgba(255, 255, 255, 0.3);
+pre.prism-code.language-js.builtin-prism-theme .token.comment,
+pre.prism-code.language-js.builtin-prism-theme .token.prolog,
+pre.prism-code.language-js.builtin-prism-theme .token.doctype,
+pre.prism-code.language-js.builtin-prism-theme .token.cdata,
+pre.prism-code.language-markup.builtin-prism-theme .token.comment,
+pre.prism-code.language-markup.builtin-prism-theme .token.prolog,
+pre.prism-code.language-markup.builtin-prism-theme .token.doctype,
+pre.prism-code.language-markup.builtin-prism-theme .token.cdata,
+.codeslide pre .token.comment,
+.codeslide pre .token.prolog,
+.codeslide pre .token.doctype,
+.codeslide pre .token.cdata {
+  color: #949494;
 }
 
-.token.punctuation {
+pre.prism-code.language-js.builtin-prism-theme .token.punctuation,
+pre.prism-code.language-markup.builtin-prism-theme .token.punctuation,
+.codeslide pre .token.punctuation {
+  color: #865cd6;
+}
+
+pre.prism-code.language-js.builtin-prism-theme .namespace,
+pre.prism-code.language-markup.builtin-prism-theme .namespace {
   opacity: 0.7;
 }
 
-.namespace {
-  opacity: 0.7;
+pre.prism-code.language-js.builtin-prism-theme .token.function,
+pre.prism-code.language-markup.builtin-prism-theme .token.function,
+.codeslide pre .token.function {
+  color: #865cd6;
 }
 
-.token.function {
-  /* color: #f5e6a8; */
-  color: #d4beef;
+pre.prism-code.language-js.builtin-prism-theme .token.property,
+pre.prism-code.language-js.builtin-prism-theme .token.tag,
+pre.prism-code.language-js.builtin-prism-theme .token.boolean,
+pre.prism-code.language-js.builtin-prism-theme .token.number,
+pre.prism-code.language-js.builtin-prism-theme .token.constant,
+pre.prism-code.language-js.builtin-prism-theme .token.symbol,
+pre.prism-code.language-markup.builtin-prism-theme .token.property,
+pre.prism-code.language-markup.builtin-prism-theme .token.tag,
+pre.prism-code.language-markup.builtin-prism-theme .token.boolean,
+pre.prism-code.language-markup.builtin-prism-theme .token.number,
+pre.prism-code.language-markup.builtin-prism-theme .token.constant,
+pre.prism-code.language-markup.builtin-prism-theme .token.symbol,
+.codeslide pre .token.property,
+.codeslide pre .token.tag,
+.codeslide pre .token.boolean,
+.codeslide pre .token.number,
+.codeslide pre .token.constant,
+.codeslide pre .token.symbol {
+  color: #865cd6;
 }
 
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol {
-  color: hsl(294, 40%, 70%);
+pre.prism-code.language-js.builtin-prism-theme .token.selector,
+pre.prism-code.language-js.builtin-prism-theme .token.attr-name,
+pre.prism-code.language-js.builtin-prism-theme .token.string,
+pre.prism-code.language-js.builtin-prism-theme .token.char,
+pre.prism-code.language-js.builtin-prism-theme .token.builtin,
+pre.prism-code.language-js.builtin-prism-theme .token.inserted,
+pre.prism-code.language-markup.builtin-prism-theme .token.selector,
+pre.prism-code.language-markup.builtin-prism-theme .token.attr-name,
+pre.prism-code.language-markup.builtin-prism-theme .token.string,
+pre.prism-code.language-markup.builtin-prism-theme .token.char,
+pre.prism-code.language-markup.builtin-prism-theme .token.builtin,
+pre.prism-code.language-markup.builtin-prism-theme .token.inserted,
+.codeslide pre .token.selector,
+.codeslide pre .token.attr-name,
+.codeslide pre .token.string,
+.codeslide pre .token.char,
+.codeslide pre .token.builtin,
+.codeslide pre .token.inserted {
+  color: black;
 }
 
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-  color: #a9c267;
+pre.prism-code.language-js.builtin-prism-theme .token.operator,
+pre.prism-code.language-js.builtin-prism-theme .token.entity,
+pre.prism-code.language-js.builtin-prism-theme .token.url,
+pre.prism-code.language-js.builtin-prism-theme .language-css .token.string,
+pre.prism-code.language-js.builtin-prism-theme .style .token.string,
+pre.prism-code.language-js.builtin-prism-theme .token.variable,
+pre.prism-code.language-markup.builtin-prism-theme .token.operator,
+pre.prism-code.language-markup.builtin-prism-theme .token.entity,
+pre.prism-code.language-markup.builtin-prism-theme .token.url,
+pre.prism-code.language-markup.builtin-prism-theme .language-css .token.string,
+pre.prism-code.language-markup.builtin-prism-theme .style .token.string,
+pre.prism-code.language-markup.builtin-prism-theme .token.variable,
+.codeslide pre .token.operator,
+.codeslide pre .token.entity,
+.codeslide pre .token.url,
+.codeslide pre .language-css .token.string,
+.codeslide pre .style .token.string,
+.codeslide pre .token.variable {
+  color: #865cd6;
 }
 
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string,
-.token.variable {
-  color: hsl(40, 90%, 60%);
+pre.prism-code.language-js.builtin-prism-theme .token.atrule,
+pre.prism-code.language-js.builtin-prism-theme .token.attr-value,
+pre.prism-code.language-js.builtin-prism-theme .token.keyword,
+pre.prism-code.language-markup.builtin-prism-theme .token.atrule,
+pre.prism-code.language-markup.builtin-prism-theme .token.attr-value,
+pre.prism-code.language-markup.builtin-prism-theme .token.keyword,
+.codeslide pre .token.atrule,
+.codeslide pre .token.attr-value,
+.codeslide pre .token.keyword {
+  color: black;
 }
 
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-  color: hsl(294, 40%, 70%);
+pre.prism-code.language-js.builtin-prism-theme .token.regex,
+pre.prism-code.language-js.builtin-prism-theme .token.important {
+  color: #865cd6;
 }
 
-.token.regex,
-.token.important {
-  color: #e90;
-}
-
-.token.important,
-.token.bold {
+pre.prism-code.language-js.builtin-prism-theme .token.important,
+pre.prism-code.language-js.builtin-prism-theme .token.bold {
   font-weight: bold;
 }
-.token.italic {
+pre.prism-code.language-js.builtin-prism-theme .token.italic {
   font-style: italic;
 }
 
-.token.entity {
+pre.prism-code.language-js.builtin-prism-theme .token.entity {
   cursor: help;
 }
 
-.token.deleted {
+pre.prism-code.language-js.builtin-prism-theme .token.deleted {
   color: red;
 }

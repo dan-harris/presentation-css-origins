@@ -1,0 +1,19 @@
+<!-- center some text -->
+<CENTER>
+    <H1>You know what? It is beets.</H1>
+</CENTER>
+
+<!-- set a base font size -->
+<BASEFONT SIZE="2">
+    <FONT SIZE="+3">What do they got in there?</FONT>
+    <FONT SIZE="-1">Yes, Yes, without the oops!</FONT>
+</BASEFONT>
+
+<!-- layout using tables -->
+<TABLE>
+    <TR>
+        <TD ALIGN="CENTER">One</TD>
+        <TD ALIGN="CENTER">Two</TD>
+        <TD ALIGN="CENTER">Jeff</TD>
+    </TR>
+</TABLE>

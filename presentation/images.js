@@ -1,9 +1,7 @@
 export const images = {
-  perfSpeed: require('../assets/speed.svg'),
   genericBGDefault: require('../assets/generic-bg.svg'),
   genericBGAlternate: require('../assets/generic-bg-white.svg'),
   danharrisLogo: require('../assets/dan-harris-logo.svg'),
-  taptuBrand: require('../assets/taptu-brand-modified.svg'),
   frontendDevADL: require('../assets/frontend-dev-adl-logo-white.png'),
   arrowLeft: require('../assets/arrow-left.svg'),
   arrowRight: require('../assets/arrow-right.svg'),
@@ -33,5 +31,11 @@ export const images = {
   architecture: require('../assets/slide-images/architecture.svg'),
   implementation: require('../assets/slide-images/implementation.svg'),
   client: require('../assets/slide-images/client.svg'),
-  server: require('../assets/slide-images/server.svg')
+  server: require('../assets/slide-images/server.svg'),
+  // example site screens
+  firstWebsite: require('../assets/slide-images/the-first-website.png'),
+  batmanForever: require('../assets/slide-images/batman-forever.png'),
+  ebay: require('../assets/slide-images/ebay.png'),
+  responsiveWebDesktop: require('../assets/slide-images/responsive-web-desktop.png'),
+  responsiveWebMobile: require('../assets/slide-images/responsive-web-mobile.png')
 };

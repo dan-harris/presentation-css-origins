@@ -1,0 +1,36 @@
+// set some style properties
+tags.H1.color = "purple";
+tags.H1.fontSize = "12pt";
+classes.myFoo.all.background = "white";
+
+// set some style properties
+// using `with` syntax
+with(tags.H1) {
+    color = "purple";
+    fontSize = "12pt";
+}
+
+// contextually select elements for styling
+contextual(tags.H1, tags.EM).color = "purple";
+contextual(classes.myFoo.all, tags.EM).color 
+    = "black";
+
+// style logic 
+with(tags.H1) {
+  if(visual.colorDepth > 2) {
+    color = "purple";
+  } else {
+    color = "black";
+  }
+}
+
+// style-evaluating functions
+// alternate the text color of LI elements
+alternateColors() {
+  if (color == "purple")
+    color = "black";
+  else
+    color = "purple";
+}
+tags.LI.apply = alternateColors;
+

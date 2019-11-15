@@ -1,0 +1,30 @@
+// PWP Stylesheet language
+(HEAD,BODY 
+        fontSize=normal
+        BGColor=white
+        FGColor=black
+    (H1 
+        fontSize=largest
+        BGColor=red
+        FGColor=white
+    )
+)
+
+// PWP stylesheet link tag
+<LINK REL="STYLE" HREF="URL_to_a_stylesheet">
+
+// PSL 96 (presentation specification language)
+P {
+    fontFamily = "times";
+    fontSize = 14;
+}
+
+// PSL 96 expressions
+A {
+    if (getAttribute(self, "href") != "") then
+        fgColor = "blue";
+    endif
+}
+UL { 
+    Width = AllChildren . Actual Width 
+}

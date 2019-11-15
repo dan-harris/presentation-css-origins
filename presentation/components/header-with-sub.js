@@ -4,7 +4,7 @@ import { Heading, Layout } from 'spectacle';
 import { SubHeading } from './sub-heading';
 
 export const HeaderWithSub = props => (
-  <Layout style={{ justifyContent: 'center', flexDirection: 'column', marginBottom: '5rem' }}>
+  <Layout style={{ justifyContent: 'center', flexDirection: 'column', marginBottom: props.isTitleSlide ? '0' : '5rem', ...props.style }}>
     <Heading size={2}>{props.children}</Heading>
     {props.subheading ? <SubHeading size={3}>{props.subheading}</SubHeading> : <SubHeading />}
   </Layout>
