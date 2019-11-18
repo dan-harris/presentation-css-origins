@@ -1,0 +1,17 @@
+// simple usage with selectors
+font.family = times
+h1.font.family = helvetica
+
+// set 'influence' of rules
+h2.font.size = 20pt 40%
+
+// 'environment variables' that can
+// be used as css logic
+AGE > 3d 
+    ? background.color = purple 
+    : background.color = white
+
+
+
+
+

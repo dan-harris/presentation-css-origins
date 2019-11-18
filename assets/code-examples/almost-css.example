@@ -1,12 +1,10 @@
 // PWP Stylesheet language
 (HEAD,BODY 
         fontSize=normal
-        BGColor=white
         FGColor=black
     (H1 
         fontSize=largest
-        BGColor=red
-        FGColor=white
+        FGColor=purple
     )
 )
 

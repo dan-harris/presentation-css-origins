@@ -24,3 +24,16 @@ export const defaultCodeBG = {
   className: 'codeslide',
   showLineNumbers: false
 };
+
+/**
+ * code slide with an expanded initial code selection
+ */
+export const expandedCodeBG = {
+  ...defaultCodeBG,
+  className: 'codeslide codeslide--expanded'
+};
+
+export const collapsedCodeBG = {
+  ...defaultCodeBG,
+  className: 'codeslide codeslide--collapsed'
+};

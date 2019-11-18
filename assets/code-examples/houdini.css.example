@@ -1,0 +1,20 @@
+/* create explosions using */
+/* the paint API */
+.explosion-bg {
+    background: paint(explosions);
+}
+
+/* register custom properties */
+CSS.registerProperty({
+  name: '--explode-area',
+  syntax: '<number>',
+  initialValue: 50
+});
+
+/* create our own background */
+.main-bg {
+  background: paint(background);
+  --background-opacity: 1;
+  --background-rotate: 0deg;
+  --blur: 0px;
+}

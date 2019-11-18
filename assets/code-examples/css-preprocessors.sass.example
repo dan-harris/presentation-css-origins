@@ -1,0 +1,13 @@
+/* set variables */
+$primary-color: purple;
+h1 {
+  color: $primary-color;
+}
+
+/* compile-time logic */
+$square-count: 4
+@for $i from 1 through $square-count {
+  #square-{$i} {
+   background-color: black
+  }
+}

@@ -1,0 +1,12 @@
+// style object
+const style = {
+    color: 'purple'
+};
+
+// dynamic styles
+const primaryColor = 'purple';
+const getStyles = () => ({
+    color: isPrimary 
+        ? primaryColor
+        : 'white'
+})

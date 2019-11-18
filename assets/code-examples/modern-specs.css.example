@@ -1,0 +1,18 @@
+
+/* flexbox module */
+.flex-container {
+  display: flex;
+}
+
+/* vertical & horizontal centre */
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* custom properties */
+--primary-color: purple
+h1 {
+    color: var(--primary-color);
+}

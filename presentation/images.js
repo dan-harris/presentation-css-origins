@@ -37,5 +37,7 @@ export const images = {
   batmanForever: require('../assets/slide-images/batman-forever.png'),
   ebay: require('../assets/slide-images/ebay.png'),
   responsiveWebDesktop: require('../assets/slide-images/responsive-web-desktop.png'),
-  responsiveWebMobile: require('../assets/slide-images/responsive-web-mobile.png')
+  responsiveWebMobile: require('../assets/slide-images/responsive-web-mobile.png'),
+  facebookApp: require('../assets/slide-images/facebook-profile-2013.png'),
+  marioKart: require('../assets/slide-images/mario-kart.png')
 };

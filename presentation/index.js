@@ -1,14 +1,17 @@
 import React from 'react';
-import { Deck, Heading, Image, Layout, Slide, Text } from 'spectacle';
+import { Appear, Deck, Heading, Image, Layout, Slide, Text } from 'spectacle';
 import CodeSlide from 'spectacle-code-slide';
 import preloader from 'spectacle/lib/utils/preloader';
-import { BoxAcidTest } from './components/acid-test';
 import { BlockQuote } from './components/block-quote';
+import { BoxSizing } from './components/box-sizing';
 import { BrowserWindowChrome } from './components/browser-window-chrome';
-import { defaultBG, defaultCodeBG, highlightBG } from './components/default-attrs/slide-defaults';
+import { fadeInCustom } from './components/default-attrs/appear-defaults';
+import { collapsedCodeBG, defaultBG, defaultCodeBG, expandedCodeBG, highlightBG } from './components/default-attrs/slide-defaults';
+import { FloatGrid } from './components/float-grid';
 import { HeaderWithSub } from './components/header-with-sub';
 import { ListWithEmphasis } from './components/list';
 import { ListItemWithEmphasis } from './components/list-item';
+import { MobileWindowChrome } from './components/mobile-window-chrome';
 import { SubHeading } from './components/sub-heading';
 import { images } from './images';
 import SlideNotes01 from './slide-notes/01.md';
@@ -29,6 +32,27 @@ import SlideNotes15 from './slide-notes/15.md';
 import SlideNotes16 from './slide-notes/16.md';
 import SlideNotes17 from './slide-notes/17.md';
 import SlideNotes18 from './slide-notes/18.md';
+import SlideNotes19 from './slide-notes/19.md';
+import SlideNotes20 from './slide-notes/20.md';
+import SlideNotes21 from './slide-notes/21.md';
+import SlideNotes22 from './slide-notes/22.md';
+import SlideNotes23 from './slide-notes/23.md';
+import SlideNotes24 from './slide-notes/24.md';
+import SlideNotes25 from './slide-notes/25.md';
+import SlideNotes26 from './slide-notes/26.md';
+import SlideNotes27 from './slide-notes/27.md';
+import SlideNotes28 from './slide-notes/28.md';
+import SlideNotes29 from './slide-notes/29.md';
+import SlideNotes30 from './slide-notes/30.md';
+import SlideNotes31 from './slide-notes/31.md';
+import SlideNotes32 from './slide-notes/32.md';
+import SlideNotes33 from './slide-notes/33.md';
+import SlideNotes34 from './slide-notes/34.md';
+import SlideNotes35 from './slide-notes/35.md';
+import SlideNotes36 from './slide-notes/36.md';
+import SlideNotes37 from './slide-notes/37.md';
+import SlideNotes38 from './slide-notes/38.md';
+import SlideNotes40 from './slide-notes/40.md';
 import './styles/globals.css';
 import './styles/prism-theme.css';
 import { createCustomTheme } from './styles/theme-custom';
@@ -38,8 +62,15 @@ import { ProfileSlideContent } from './templates/profile-slide-content';
  * create custom theme
  */
 const customTheme = createCustomTheme();
-
 preloader(images);
+
+/**
+ * lazily load prism languages
+ */
+setTimeout(() => {
+  require('prismjs/components/prism-css');
+  require('prismjs/components/prism-scss');
+}, 1000);
 
 /**
  * reset CSS
@@ -82,7 +113,7 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 4 */}
         <Slide {...defaultBG} notes={SlideNotes04}>
-          <HeaderWithSub subheading="todo" isTitleSlide>
+          <HeaderWithSub subheading="TODO:" isTitleSlide>
             Timeline Here
           </HeaderWithSub>
         </Slide>
@@ -126,7 +157,7 @@ export default class Presentation extends React.Component {
         <CodeSlide
           {...defaultCodeBG}
           code={require('raw-loader!../assets/code-examples/batman-forever.html.example')} // eslint-disable-line
-          ranges={[{ loc: [0, 4] }, { loc: [5, 10] }, { loc: [11, 19] }]}
+          ranges={[{ loc: [0, 4], title: <HeaderWithSub isTitleSlide>styling sites</HeaderWithSub> }, { loc: [5, 10] }, { loc: [11, 19] }]}
           notes={SlideNotes09}
         />
 
@@ -139,25 +170,63 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 11 */}
         <CodeSlide
-          {...defaultCodeBG}
+          {...expandedCodeBG}
           lang="js"
           code={require('raw-loader!../assets/code-examples/almost-css.example')} // eslint-disable-line
           ranges={[
-            { loc: [0, 12] },
-            { loc: [1, 2] },
-            { loc: [5, 10] },
-            { loc: [12, 14] },
-            { loc: [15, 20] },
-            { loc: [21, 27] },
-            { loc: [27, 30] }
+            { loc: [0, 10], title: <HeaderWithSub>Style Contenders</HeaderWithSub> },
+            { loc: [10, 12] },
+            { loc: [13, 18] },
+            { loc: [19, 25] },
+            { loc: [25, 28] }
           ]}
           notes={SlideNotes11}
         />
 
         {/* SLIDE 12 */}
-        <Slide {...defaultBG} notes={SlideNotes12}>
+        <CodeSlide
+          {...defaultCodeBG}
+          lang="js"
+          code={require('raw-loader!../assets/code-examples/cascading-html-stylesheets.example')} // eslint-disable-line
+          ranges={[
+            { loc: [0, 4], title: <HeaderWithSub isTitleSlide>Cascading HTML Style Sheets</HeaderWithSub> },
+            { loc: [4, 7] },
+            { loc: [7, 13] }
+          ]}
+          notes={SlideNotes12}
+        />
+
+        {/*
+         * ======================
+         * STYLISH DOCUMENTS
+         * ======================
+         */}
+
+        {/* SLIDE 13 */}
+        <Slide {...defaultBG} notes={SlideNotes13}>
+          <HeaderWithSub subheading="TODO:" isTitleSlide>
+            timeline update
+          </HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 14 */}
+        <Slide {...defaultBG} notes={SlideNotes14}>
+          <HeaderWithSub subheading="vendorzoic era" isTitleSlide>
+            super stylish documents
+          </HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 15 */}
+        <Slide {...defaultBG} notes={SlideNotes15}>
+          <BrowserWindowChrome>
+            <Image src={images.ebay} />
+          </BrowserWindowChrome>
+        </Slide>
+
+        {/* SLIDE 16 */}
+        <Slide {...defaultBG} notes={SlideNotes16}>
           <>
-            <HeaderWithSub>Cascading HTML Stylesheet</HeaderWithSub>
+            <HeaderWithSub>a new spec... CSS</HeaderWithSub>
             <Layout style={{ justifyContent: 'space-evenly' }}>
               <ListWithEmphasis>
                 <ListItemWithEmphasis>
@@ -183,66 +252,215 @@ export default class Presentation extends React.Component {
           </>
         </Slide>
 
-        {/*
-         * ======================
-         * STYLISH DOCUMENTS
-         * ======================
-         */}
-
-        {/* SLIDE 13 */}
-        <Slide {...defaultBG} notes={SlideNotes13}>
-          <HeaderWithSub subheading="todo" isTitleSlide>
-            timeline update
-          </HeaderWithSub>
-        </Slide>
-
-        {/* SLIDE 14 */}
-        <Slide {...defaultBG} notes={SlideNotes14}>
-          <HeaderWithSub subheading="vendorzoic era" isTitleSlide>
-            super stylish documents
-          </HeaderWithSub>
-        </Slide>
-
-        {/* SLIDE 15 */}
-        <Slide {...defaultBG} notes={SlideNotes15}>
-          <BrowserWindowChrome>
-            <Image src={images.ebay} />
-          </BrowserWindowChrome>
-        </Slide>
-
-        {/* SLIDE 16 */}
-        <Slide {...defaultBG} notes={SlideNotes16}>
-          <HeaderWithSub subheading="css" isTitleSlide>
-            a new spec
-          </HeaderWithSub>
-        </Slide>
+        {/* SLIDE XX */}
+        {/* <Slide {...defaultBG} notes={SlideNotes17}>
+          <BoxAcidTest />
+        </Slide> */}
 
         {/* SLIDE 17 */}
         <Slide {...defaultBG} notes={SlideNotes17}>
-          <BoxAcidTest />
+          <BoxSizing />
         </Slide>
 
         {/* SLIDE 18 */}
-        <Slide {...defaultBG} notes={SlideNotes18}>
-          <HeaderWithSub subheading="todo" isTitleSlide>
-            box model
-          </HeaderWithSub>
-        </Slide>
-
-        {/* SLIDE 19 */}
         <CodeSlide
           {...defaultCodeBG}
           lang="js"
           code={require('raw-loader!../assets/code-examples/netscape-jss.example')} // eslint-disable-line
-          ranges={[{ loc: [0, 5] }, { loc: [5, 12] }, { loc: [12, 16] }, { loc: [16, 25] }, { loc: [25, 35] }]}
-          notes={SlideNotes11}
+          ranges={[
+            { loc: [0, 5], title: <HeaderWithSub isTitleSlide>Netscape JSSS</HeaderWithSub> },
+            { loc: [5, 12] },
+            { loc: [12, 16] },
+            { loc: [16, 25] },
+            { loc: [25, 35] }
+          ]}
+          notes={SlideNotes18}
+        />
+
+        {/* SLIDE 19 */}
+        <Slide {...defaultBG} notes={SlideNotes19}>
+          <HeaderWithSub isTitleSlide>A year later... CSS 2</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 20 */}
+        <Slide {...defaultBG} notes={SlideNotes20}>
+          <FloatGrid />
+        </Slide>
+
+        {/* SLIDE 21 */}
+        <CodeSlide
+          {...collapsedCodeBG}
+          lang="css"
+          code={require('raw-loader!../assets/code-examples/clearfix.css.example')} // eslint-disable-line
+          ranges={[{ loc: [0, 9], title: <HeaderWithSub isTitleSlide>Clearfix Float grid</HeaderWithSub> }]}
+          notes={SlideNotes21}
+        />
+
+        {/* SLIDE 22 */}
+        <Slide {...defaultBG} notes={SlideNotes22}>
+          <HeaderWithSub subheading="implementation" isTitleSlide>
+            Finally, an Actual CSS
+          </HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 23 */}
+        <Slide {...defaultBG} notes={SlideNotes23}>
+          <HeaderWithSub isTitleSlide>A year later... CSS 3 spec</HeaderWithSub>
+        </Slide>
+
+        {/*
+         * ======================
+         * RESPONSIVE DOCUMENTS
+         * ======================
+         */}
+
+        {/* SLIDE 24 */}
+        <Slide {...defaultBG} notes={SlideNotes24}>
+          <HeaderWithSub subheading="TODO:" isTitleSlide>
+            timeline update
+          </HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 25 */}
+        <Slide {...defaultBG} notes={SlideNotes25}>
+          <HeaderWithSub subheading="mobilean era" isTitleSlide>
+            responsive documents
+          </HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 26 */}
+        <Slide {...defaultBG} notes={SlideNotes26}>
+          <BrowserWindowChrome>
+            <Image src={images.responsiveWebDesktop} />
+          </BrowserWindowChrome>
+          <Appear order={1} {...fadeInCustom(0)}>
+            <div>
+              <MobileWindowChrome hasChildAnimation>
+                <Appear order={2} {...fadeInCustom(0)}>
+                  <Image src={images.responsiveWebMobile} />
+                </Appear>
+              </MobileWindowChrome>
+            </div>
+          </Appear>
+        </Slide>
+
+        {/* SLIDE 27 */}
+        <CodeSlide
+          {...collapsedCodeBG}
+          lang="css"
+          code={require('raw-loader!../assets/code-examples/media-query.css.example')} // eslint-disable-line
+          ranges={[{ loc: [0, 9], title: <HeaderWithSub isTitleSlide>Media Query</HeaderWithSub> }]}
+          notes={SlideNotes27}
+        />
+
+        {/* SLIDE 28 */}
+        <CodeSlide
+          {...expandedCodeBG}
+          lang="scss"
+          code={require('raw-loader!../assets/code-examples/css-preprocessors.sass.example')} // eslint-disable-line
+          ranges={[{ loc: [0, 6], title: <HeaderWithSub isTitleSlide>CSS Preprocessors</HeaderWithSub> }, { loc: [6, 15] }]}
+          notes={SlideNotes28}
         />
 
         {/*
          * ======================
-         * IMPLEMENTATION
+         * WEB APPS
          * ======================
          */}
+
+        {/* SLIDE 29 */}
+        <Slide {...defaultBG} notes={SlideNotes29}>
+          <HeaderWithSub subheading="TODO:" isTitleSlide>
+            timeline update
+          </HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 30 */}
+        <Slide {...defaultBG} notes={SlideNotes30}>
+          <HeaderWithSub subheading="applicus era" isTitleSlide>
+            web applications
+          </HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 31 */}
+        <Slide {...defaultBG} notes={SlideNotes31}>
+          <BrowserWindowChrome>
+            <Image src={images.facebookApp} />
+          </BrowserWindowChrome>
+        </Slide>
+
+        {/* SLIDE 32 */}
+        <CodeSlide
+          {...defaultCodeBG}
+          lang="css"
+          code={require('raw-loader!../assets/code-examples/modern-specs.css.example')} // eslint-disable-line
+          ranges={[{ loc: [0, 5], title: <HeaderWithSub isTitleSlide>Modern Specs</HeaderWithSub> }, { loc: [5, 12] }, { loc: [12, 18] }]}
+          notes={SlideNotes32}
+        />
+
+        {/* SLIDE 33 */}
+        <Slide {...defaultBG} notes={SlideNotes33}>
+          <HeaderWithSub isTitleSlide>Componentised CSS</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 34 */}
+        <CodeSlide
+          {...defaultCodeBG}
+          lang="js"
+          code={require('raw-loader!../assets/code-examples/css-in-js.css.example')} // eslint-disable-line
+          ranges={[{ loc: [0, 5], title: <HeaderWithSub isTitleSlide>CSS in JS</HeaderWithSub> }, { loc: [5, 13] }]}
+          notes={SlideNotes34}
+        />
+
+        {/* SLIDE 35 */}
+        <Slide {...defaultBG} notes={SlideNotes35}>
+          <HeaderWithSub isTitleSlide>and finally...</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 36 */}
+        <CodeSlide
+          {...collapsedCodeBG}
+          lang="js"
+          code={require('raw-loader!../assets/code-examples/css-grid.css.example')} // eslint-disable-line
+          ranges={[{ loc: [0, 5], title: <HeaderWithSub isTitleSlide>CSS Grid</HeaderWithSub> }]}
+          notes={SlideNotes36}
+        />
+
+        {/*
+         * ======================
+         * THE FUTURE
+         * ======================
+         */}
+
+        {/* SLIDE 37 */}
+        <Slide {...defaultBG} notes={SlideNotes37}>
+          <HeaderWithSub subheading="TODO:" isTitleSlide>
+            timeline update
+          </HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 38 */}
+        <Slide {...defaultBG} notes={SlideNotes38}>
+          <BrowserWindowChrome>
+            <Image src={images.marioKart} />
+          </BrowserWindowChrome>
+        </Slide>
+
+        {/* SLIDE 39 */}
+        <CodeSlide
+          {...expandedCodeBG}
+          lang="js"
+          code={require('raw-loader!../assets/code-examples/houdini.css.example')} // eslint-disable-line
+          ranges={[{ loc: [0, 6], title: <HeaderWithSub isTitleSlide>CSS Houdini</HeaderWithSub> }, { loc: [6, 13] }, { loc: [13, 21] }]}
+          notes={SlideNotes36}
+        />
+
+        {/* SLIDE 40 */}
+        <Slide {...defaultBG} notes={SlideNotes40}>
+          <HeaderWithSub subheading="future" isTitleSlide>
+            excitingly styled
+          </HeaderWithSub>
+        </Slide>
 
         {/*
          * ======================
@@ -250,7 +468,14 @@ export default class Presentation extends React.Component {
          * ======================
          */}
 
-        {/* SLIDE 36 */}
+        {/* SLIDE 41 */}
+        <Slide {...defaultBG} notes={SlideNotes40}>
+          <HeaderWithSub subheading="TODO:" isTitleSlide>
+            heaps good dev slide
+          </HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 42 */}
         <Slide {...defaultBG}>
           <ProfileSlideContent />
         </Slide>

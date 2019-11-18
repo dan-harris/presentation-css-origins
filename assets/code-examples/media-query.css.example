@@ -1,0 +1,7 @@
+/* remove float on smaller screens */
+/* (change float 'grid' to a single column) */
+@media screen and (max-device-width: 480px) {
+  .column {
+    float: none;
+  }
+}

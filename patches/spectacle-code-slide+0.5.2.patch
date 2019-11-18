@@ -544,7 +544,7 @@ index 848677d..eba49ec 100644
 +        return React.createElement(
 +          Slide,
 +          _extends({ ref: "slide", bgColor: slideBg, margin: 1 }, rest),
-+          range.title && React.createElement(CodeSlideTitle, null, range.title),
++          range.title,
            React.createElement(
 -            'code',
 -            { style: { display: "inline-block", textAlign: "left" } },

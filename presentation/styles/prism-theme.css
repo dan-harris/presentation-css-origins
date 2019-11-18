@@ -70,7 +70,13 @@ pre[class*='language-'].prism-code.language-markup.builtin-prism-theme {
 .codeslide code > div {
   min-height: 1.25em;
 }
+.codeslide.codeslide--collapsed pre {
+  margin-top: -30% !important;
+}
 .codeslide pre {
+  margin-top: -20% !important;
+}
+.codeslide.codeslide--expanded pre {
   margin-top: -10% !important;
 }
 
@@ -175,22 +181,23 @@ pre.prism-code.language-markup.builtin-prism-theme .token.variable,
 .codeslide pre .token.url,
 .codeslide pre .language-css .token.string,
 .codeslide pre .style .token.string,
-.codeslide pre .token.variable {
+.codeslide pre .token.variable,
+.codeslide pre .token.keyword {
   color: #865cd6;
 }
 
-pre.prism-code.language-js.builtin-prism-theme .token.atrule,
 pre.prism-code.language-js.builtin-prism-theme .token.attr-value,
 pre.prism-code.language-js.builtin-prism-theme .token.keyword,
-pre.prism-code.language-markup.builtin-prism-theme .token.atrule,
 pre.prism-code.language-markup.builtin-prism-theme .token.attr-value,
 pre.prism-code.language-markup.builtin-prism-theme .token.keyword,
 .codeslide pre .token.atrule,
-.codeslide pre .token.attr-value,
-.codeslide pre .token.keyword {
+.codeslide pre .token.attr-value {
   color: black;
 }
 
+pre.prism-code.language-js.builtin-prism-theme .token.atrule .token.rule,
+pre.prism-code.language-markup.builtin-prism-theme .token.atrule .token.rule,
+.codeslide pre .token.atrule .token.rule,
 pre.prism-code.language-js.builtin-prism-theme .token.regex,
 pre.prism-code.language-js.builtin-prism-theme .token.important {
   color: #865cd6;
