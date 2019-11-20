@@ -39,5 +39,11 @@ export const images = {
   responsiveWebDesktop: require('../assets/slide-images/responsive-web-desktop.png'),
   responsiveWebMobile: require('../assets/slide-images/responsive-web-mobile.png'),
   facebookApp: require('../assets/slide-images/facebook-profile-2013.png'),
-  marioKart: require('../assets/slide-images/mario-kart.png')
+  marioKart: require('../assets/slide-images/mario-kart.png'),
+  hgdLogo: require('../assets/slide-images/logo-square-noborder.svg'),
+  robotSimple: require('../assets/slide-images/robot-simple.svg'),
+  robotStylish: require('../assets/slide-images/robot-stylish.svg'),
+  robotResponsive: require('../assets/slide-images/robot-responsive.svg'),
+  robotWebApp: require('../assets/slide-images/robot-web-apps.png'),
+  robotFuture: require('../assets/slide-images/robot-future.svg')
 };
