@@ -5,8 +5,50 @@ import { Image } from 'spectacle';
 import { images } from '../images';
 import { SlideStep } from './slide-step';
 
-const TOTAL_STEPS = 5;
+/**
+ * component helpers
+ */
+const getLoadBarSelectedWidth = (step = 0) => {
+  switch (step) {
+    case 0:
+      return '5%';
+    case 1:
+      return '26.5%';
+    case 2:
+      return '50%';
+    case 3:
+      return '73.5%';
+    case 4:
+      return '95%';
+    default:
+      return '5%';
+  }
+};
 
+const getTimelineImageTransform = (step = 0) => {
+  switch (step) {
+    case 0:
+      return 'scale(0.8) translateY(19px)';
+    case 3:
+      return 'scale(1.2) translateY(-17px)';
+    case 4:
+      return 'scale(1.3) translate(15px, -12px)';
+    default:
+      return 'none';
+  }
+};
+
+const isDisplayStep = (currentStep, step = 0) => {
+  return step <= currentStep;
+};
+
+const isStep = (currentStep, step = 0) => {
+  return step === currentStep;
+};
+
+/**
+ * component styles
+ */
 const TimelineWrapper = styled.div`
   margin-top: 550px;
   margin-left: -45px;
@@ -36,40 +78,15 @@ const LoadBarSelected = styled.div`
   border-right: 0.4rem solid black;
 `;
 
-const getLoadBarSelectedWidth = (step = 0) => {
-  switch (step) {
-    case 0:
-      return '5%';
-    case 1:
-      return '26.5%';
-    case 2:
-      return '50%';
-    case 3:
-      return '73.5%';
-    case 4:
-      return '95%';
-    default:
-      return '5%';
-  }
-};
-
-const isDisplayStep = (currentStep, step = 0) => {
-  return step <= currentStep;
-};
-
-const isStep = (currentStep, step = 0) => {
-  return step === currentStep;
-};
-
 const TimeIndicator = styled.div`
   position: absolute;
   left: calc(${props => getLoadBarSelectedWidth(props.step)} - 6px);
-  height: 50px;
+  height: ${props => (isDisplayStep(props.currentStep, props.step) ? '50px' : '0px')};
   width: 0.4rem;
   bottom: 55px;
   background-color: black;
   opacity: ${props => (isDisplayStep(props.currentStep, props.step) ? '1' : '0')};
-  transition: opacity 600ms ease-in-out;
+  transition: opacity 600ms ease-in-out, height 200ms ease-in-out;
   transition-delay: 600ms;
 `;
 
@@ -82,6 +99,7 @@ const TimeIndicatorImage = styled(Image)`
   bottom: 120px;
   max-width: initial !important;
   max-height: initial !important;
+  transform: ${props => getTimelineImageTransform(props.step)};
 `;
 
 const TimeIndicatorHeadingWrapper = styled.div`
@@ -109,6 +127,9 @@ const TimeIndicatorSubheadingText = styled.span`
   font-weight: 500;
 `;
 
+/**
+ * sub-components
+ */
 const TimeIndicatorHeading = ({ heading, subheading, currentStep, step }) => (
   <TimeIndicatorHeadingWrapper step={step} currentStep={currentStep}>
     <TimeIndicatorHeadingText>{heading}</TimeIndicatorHeadingText>
@@ -116,7 +137,10 @@ const TimeIndicatorHeading = ({ heading, subheading, currentStep, step }) => (
   </TimeIndicatorHeadingWrapper>
 );
 
-export class TimelineFirstShow extends React.Component {
+/**
+ * le component
+ */
+export class Timeline extends React.Component {
   constructor(props) {
     super(props);
     this.handleStep = this.handleStep.bind(this);
@@ -142,12 +166,19 @@ export class TimelineFirstShow extends React.Component {
     const { minStep } = this.props;
 
     // dumb calc as this function runs twice for every step update
-    const calcCurrentStep = Math.floor(step / 2);
-    return calcCurrentStep + minStep;
+    if (minStep === 2) {
+      const calcCurrentStep = Math.floor(step / 2) + 1;
+      return calcCurrentStep < minStep ? minStep : calcCurrentStep;
+    } else if (minStep === 3) {
+      console.log({ step });
+      return step > 3 ? 4 : 3;
+    } else {
+      const calcCurrentStep = Math.floor(step / 2);
+      return calcCurrentStep + minStep;
+    }
   }
 
   render() {
-    console.log({ step: this.getStep() });
     const currentStep = this.getStep();
     const { minStep, maxStep } = this.props;
     const totalSteps = maxStep - minStep;
@@ -158,7 +189,7 @@ export class TimelineFirstShow extends React.Component {
           {/* simple documents */}
           <TimeIndicator step={0} currentStep={currentStep} />
           <TimeIndicatorImage step={0} currentStep={currentStep} src={images.robotSimple} height={175} width={175} />
-          <TimeIndicatorHeading step={0} currentStep={currentStep} heading="simple documents" subheading="early 2000's" />
+          <TimeIndicatorHeading step={0} currentStep={currentStep} heading="simple documents" subheading="early 1990's" />
           {/* stylish documents */}
           <TimeIndicator step={1} currentStep={currentStep} />
           <TimeIndicatorImage step={1} currentStep={currentStep} src={images.robotStylish} height={175} width={175} />

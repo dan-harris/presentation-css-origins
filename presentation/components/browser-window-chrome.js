@@ -17,7 +17,7 @@ const BrowserWindowWrapper = styled.div`
     margin: 0;
     opacity: ${props => (props.showImage ? 1 : 0)};
     width: 100%;
-    transition: opacity 300ms ease-in;
+    transition: opacity 400ms ease-in-out;
   }
 `;
 

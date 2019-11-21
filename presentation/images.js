@@ -45,5 +45,8 @@ export const images = {
   robotStylish: require('../assets/slide-images/robot-stylish.svg'),
   robotResponsive: require('../assets/slide-images/robot-responsive.svg'),
   robotWebApp: require('../assets/slide-images/robot-web-apps.png'),
-  robotFuture: require('../assets/slide-images/robot-future.svg')
+  robotFuture: require('../assets/slide-images/robot-future.svg'),
+  DDDDonut: require('../assets/slide-images/DDDDonut.png'),
+  DDDAdelaide: require('../assets/slide-images/ddd-adelaide-2019.png'),
+  sponsors: require('../assets/slide-images/sponsors.png')
 };

@@ -5,6 +5,7 @@ import preloader from 'spectacle/lib/utils/preloader';
 import { BlockQuote } from './components/block-quote';
 import { BoxSizing } from './components/box-sizing';
 import { BrowserWindowChrome } from './components/browser-window-chrome';
+import { CSSGrid } from './components/css-grid';
 import { fadeInCustom } from './components/default-attrs/appear-defaults';
 import { collapsedCodeBG, defaultBG, defaultCodeBG, expandedCodeBG, highlightBG } from './components/default-attrs/slide-defaults';
 import { FloatGrid } from './components/float-grid';
@@ -14,7 +15,7 @@ import { ListWithEmphasis } from './components/list';
 import { ListItemWithEmphasis } from './components/list-item';
 import { MobileWindowChrome } from './components/mobile-window-chrome';
 import { SubHeading } from './components/sub-heading';
-import { TimelineFirstShow } from './components/timeline';
+import { Timeline } from './components/timeline';
 import { images } from './images';
 import SlideNotes01 from './slide-notes/01.md';
 import SlideNotes02 from './slide-notes/02.md';
@@ -51,9 +52,9 @@ import SlideNotes32 from './slide-notes/32.md';
 import SlideNotes33 from './slide-notes/33.md';
 import SlideNotes34 from './slide-notes/34.md';
 import SlideNotes35 from './slide-notes/35.md';
-import SlideNotes36 from './slide-notes/36.md';
 import SlideNotes37 from './slide-notes/37.md';
 import SlideNotes38 from './slide-notes/38.md';
+import SlideNotes39 from './slide-notes/39.md';
 import SlideNotes40 from './slide-notes/40.md';
 import './styles/globals.css';
 import './styles/prism-theme.css';
@@ -90,10 +91,16 @@ export default class Presentation extends React.Component {
          * ======================
          */}
 
-        {/* SLIDE 1 */}
+        {/* SLIDE 1.1 */}
         <Slide {...defaultBG} notes={SlideNotes01}>
-          <Heading size={1}>Sponsor</Heading>
-          <SubHeading size={3}>slides</SubHeading>
+          <Image src={images.DDDDonut} width={500} />
+          <Image src={images.DDDAdelaide} width={475} />
+          <Text style={{ marginTop: '3rem' }}>#DDDAdelaide / @DDDAdelaide</Text>
+        </Slide>
+
+        {/* SLIDE 1.2 */}
+        <Slide {...defaultBG} notes={SlideNotes01}>
+          <Image src={images.sponsors} />
         </Slide>
 
         {/* SLIDE 2 */}
@@ -116,7 +123,7 @@ export default class Presentation extends React.Component {
         {/* SLIDE 4 */}
         <Slide {...defaultBG} notes={SlideNotes04}>
           <LayoutExpanded style={{ margin: 0 }}>
-            <TimelineFirstShow minStep={0} maxStep={4} />
+            <Timeline minStep={0} maxStep={4} />
           </LayoutExpanded>
         </Slide>
 
@@ -129,7 +136,7 @@ export default class Presentation extends React.Component {
         {/* SLIDE 5 */}
         <Slide {...defaultBG} notes={SlideNotes05}>
           <HeaderWithSub subheading="wilde-westean era" isTitleSlide>
-            simpl(ish) documents
+            simple documents
           </HeaderWithSub>
         </Slide>
 
@@ -206,7 +213,7 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 13 */}
         <Slide {...defaultBG} notes={SlideNotes13}>
-          <TimelineFirstShow minStep={0} maxStep={1} />
+          <Timeline minStep={0} maxStep={1} />
         </Slide>
 
         {/* SLIDE 14 */}
@@ -316,7 +323,7 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 24 */}
         <Slide {...defaultBG} notes={SlideNotes24}>
-          <TimelineFirstShow minStep={1} maxStep={2} />
+          <Timeline minStep={1} maxStep={2} />
         </Slide>
 
         {/* SLIDE 25 */}
@@ -368,7 +375,7 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 29 */}
         <Slide {...defaultBG} notes={SlideNotes29}>
-          <TimelineFirstShow minStep={1} maxStep={2} />
+          <Timeline minStep={2} maxStep={3} />
         </Slide>
 
         {/* SLIDE 30 */}
@@ -414,13 +421,16 @@ export default class Presentation extends React.Component {
         </Slide>
 
         {/* SLIDE 36 */}
-        <CodeSlide
+        {/* <CodeSlide
           {...collapsedCodeBG}
           lang="js"
           code={require('raw-loader!../assets/code-examples/css-grid.css.example')} // eslint-disable-line
           ranges={[{ loc: [0, 5], title: <HeaderWithSub isTitleSlide>CSS Grid</HeaderWithSub> }]}
           notes={SlideNotes36}
-        />
+        /> */}
+        <Slide {...defaultBG} notes={SlideNotes20}>
+          <CSSGrid />
+        </Slide>
 
         {/*
          * ======================
@@ -430,7 +440,7 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 37 */}
         <Slide {...defaultBG} notes={SlideNotes37}>
-          <TimelineFirstShow minStep={3} maxStep={4} />
+          <Timeline minStep={3} maxStep={4} />
         </Slide>
 
         {/* SLIDE 38 */}
@@ -446,7 +456,7 @@ export default class Presentation extends React.Component {
           lang="js"
           code={require('raw-loader!../assets/code-examples/houdini.css.example')} // eslint-disable-line
           ranges={[{ loc: [0, 6], title: <HeaderWithSub isTitleSlide>CSS Houdini</HeaderWithSub> }, { loc: [6, 13] }, { loc: [13, 21] }]}
-          notes={SlideNotes36}
+          notes={SlideNotes39}
         />
 
         {/* SLIDE 40 */}
